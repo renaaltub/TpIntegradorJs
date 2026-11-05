@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SKINCORE - Totem de skincare</title>
+        <!-- ICON -->
+        <link rel="icon" href="" type="image/png">
+        <!-- estilos -->
+        <link rel="stylesheet" href="client/css/carrito.css">
+        <!-- font awesome - ICONOS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    </head>
+    <body>
+        <!-- encabezado -->
+        <header class="header-totem">
+
+            <!--- Logo -->
+            <img src="client/img/logo.png" alt="Logo SKINCORE">
+
+            <div class="header-content">
+
+                <h1>SKINCORE</h1>
+
+                <div class="header-icons">
+                    <a href="#"><i class="fa-solid fa-circle-user"></i></a>
+                    <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                    <span class="cart-count">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="#">Test</a></li>
+                        <li><a href="#">Productos</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="main-totem">
+            <section class="cart-screen">
+                <h2>Carrito de Compras</h2>
+
+                <!-- Lista de productos en el carrito -->
+                <div class="cart-items">
+                    <img src="" alt="Carrito Vacio" class="empty-cart-image">
+                    <h3 class="empty-cart-message">Tu carrito está vacío.</h3>
+                    <p>Agrega productos al carrito para comenzar.</p>
+                </div>
+
+                <div class="cart-summary">
+                    <p>Total: $<span id="cart-total">0.00</span></p>
+                    <button id="checkout-button">Finalizar Compra</button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- LOGO -->
+                <img src="client/img/logo.png" alt="Logo de la empresa">
+
+                <div class="footer-links">
+                    <a href="#">Inicio</a>
+                    <a href="#">Test</a>
+                    <a href="#">Productos</a>
+                </div>
+
+                <hr class="footer-separator">
+
+                <div class="footer-content">
+                    <p>&copy; 2026 SKINCORE. Todos los derechos reservados.</p>
+                    <p>Altube Renada -  Grajeda Juliana</p>
+
+                    <div class="social-media">
+
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+</html>

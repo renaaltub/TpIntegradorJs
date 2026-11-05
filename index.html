@@ -1,113 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKINCORE - Totem de skincare</title>
-    <!-- favicon FALTA!!!!!!!!!!!-->
-    <link rel="icon" href="" type="image/png">
-    <!-- estilos -->
-    <link rel="stylesheet" href="/client/css/styles.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SKINCORE - Totem de skincare</title>
+        <!-- favicon FALTA!!!!!!!!!!!-->
+        <link rel="icon" href="" type="image/png">
+        <!-- estilos -->
+        <link rel="stylesheet" href="/client/css/styles.css">
+        <!-- font awesome - ICONOS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
 
-    <!-- encabezado -->
-    <header class="header-totem">
-        <!--- Logo FALTA!!!!!!!!!!!-->
-        <div class="logo">
-            <img src="" alt="Logo SKINCORE">
-            <h1>SKINCORE</h1>
-        </div>
-        <nav>    </nav>
+        <!-- encabezado -->
+        <header class="header-totem">
+
+            <!--- Logo -->
+            <img src="client/img/logo.png" alt="Logo SKINCORE">
+
+            <div class="header-content">
+
+                <h1>SKINCORE</h1>
+
+                <div class="header-icons">
+                    <a href="#"><i class="fa-solid fa-circle-user"></i></a>
+                    <a href="#"><i class="fa-solid fa-shopping-cart"></i></a>
+                    <span class="cart-count">0</span>
+                </div>
+
+            </div>
 
 
-        <p class="subtitle">Totem de skincare</p>
-    </header>
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="#">Test</a></li>
+                        <li><a href="#">Productos</a></li>
+                    </ul>
+                </nav>
+            </div>
 
-    <!-- contenido principal -->
-    <main class="main-totem">
-        <!-- pantalla de bienvenida -->
-        <section class="welcome-screen">
-            <div> 
-                <h2>Te damos la bienvenida a SKINCORE</h2>
-                <p>Por favor, ingresá tu nombre para comenzar tu compra:</p> 
-                <form>
-                    <input type="text" placeholder="Tu nombre" required>
-                    <p>¿Cómo querés continuar?</p>
-                    <div class="opciones-bienvenida">
-                        <!-- Op1: Lleva al test sobre la piel -->
-                        <button type="button" id="btn-ir-cuestionario" class="btn-opcion btn-test">
-                            <span class="texto-btn">Testear mi piel</span>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+
+        </header>
+
+        <!-- contenido principal -->
+        <main class="main-totem">
+            <!-- pantalla de bienvenida -->
+            <section class="welcome-screen">
+                <div> 
+                    <h2>Te damos la bienvenida a SKINCORE</h2>
+                    <p>Por favor, ingresá tu nombre para comenzar tu compra:</p> 
+                    <form>
+                        <input type="text" placeholder="Tu nombre" required>
+                        <p>¿Cómo querés continuar?</p>
+                        <div class="opciones-bienvenida">
+                            <!-- Op1: Lleva al test sobre la piel -->
+                            <button type="button" id="btn-ir-cuestionario" class="btn-opcion btn-test">
+                                <span class="texto-btn">Testear mi piel</span>
+                            </button>
+                            <!-- Op2: Lleva a la exploración de productos -->
+                            <button type="button" id="btn-ir-productos" class="btn-opcion btn-productos">
+                                <span class="texto-btn">Ir a productos</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- pantalla del test de piel -->
+            <section class="test-screen">
+                <div> 
+                    <h2>Test de Piel </h2> 
+                    <p>Respondé estas breves preguntas para ayudarte a encontrar los productos ideales para tu piel:</p>
+
+                    <form id="form-test">
+                        <div class="pregunta">
+                            <label for="tipo-piel">1. ¿Cuál es tu tipo de piel?</label>
+                            <select id="tipo-piel" name="tipo-piel" required>
+                                <option value="">Seleccioná una opción</option>
+                                <option value="seca">Seca</option>
+                                <option value="mixta">Mixta</option>
+                                <option value="grasa">Grasa</option>
+                                <option value="sensible">Sensible</option>
+                            </select>
+                        </div>
+
+                        <div class="pregunta">
+                            <label for="problemas-piel">2. ¿Qué problemas de piel te gustaría tratar?</label>
+                            <select id="problemas-piel" name="problemas-piel" required>
+                                <option value="">Seleccioná una opción</option>
+                                <option value="acne">Acné</option>
+                                <option value="arrugas">Arrugas</option>
+                                <option value="manchas">Manchas</option>
+                                <option value="deshidratacion">Deshidratación</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-opcion btn-test-submit">
+                            <span class="texto-btn">Enviar respuestas</span>
                         </button>
-                        <!-- Op2: Lleva a la exploración de productos -->
-                        <button type="button" id="btn-ir-productos" class="btn-opcion btn-productos">
-                            <span class="texto-btn">Ir a productos</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-        <!-- pantalla del test de piel -->
-        <section>
-            <div> 
-                <h2>Test de Piel </h2> 
-                <p>Respondé estas breves preguntas para ayudarte a encontrar los productos ideales para tu piel:</p>
-
-                <form id="form-test">
-                    <div class="pregunta">
-                        <label for="tipo-piel">1. ¿Cuál es tu tipo de piel?</label>
-                        <select id="tipo-piel" name="tipo-piel" required>
-                            <option value="">Seleccioná una opción</option>
-                            <option value="seca">Seca</option>
-                            <option value="mixta">Mixta</option>
-                            <option value="grasa">Grasa</option>
-                            <option value="sensible">Sensible</option>
-                        </select>
-                    </div>
-
-                    <div class="pregunta">
-                        <label for="problemas-piel">2. ¿Qué problemas de piel te gustaría tratar?</label>
-                        <select id="problemas-piel" name="problemas-piel" required>
-                            <option value="">Seleccioná una opción</option>
-                            <option value="acne">Acné</option>
-                            <option value="arrugas">Arrugas</option>
-                            <option value="manchas">Manchas</option>
-                            <option value="deshidratacion">Deshidratación</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn-opcion btn-test-submit">
-                        <span class="texto-btn">Enviar respuestas</span>
-                    </button>
-                </form>
-            </div> 
-        </section>
-        <!-- pantalla de productos -->
-        <section id="productos-section" class="productos-screen">
-            <div> 
-                <h3>Hola, <span id="nombre-cliente"></span> </h3> 
-                <p>Seleccioná la categoría que deseás explorar:</p>
-            </div>
-            <div class="categorias-container">
-                <div class="categoria">
-                    <h4>Todos los productos</h4>
-                    <button type="button" class="btn-categoria" data-categoria="todos">Explorar</button>
+                    </form>
+                </div> 
+            </section>
+            <!-- pantalla de productos -->
+            <section id="productos-section" class="productos-screen">
+                <div> 
+                    <h3>Hola, <span id="nombre-cliente"></span> </h3> 
+                    <p>Seleccioná la categoría que deseás explorar:</p>
                 </div>
-                <div class="categoria">
-                    <h4>Cremas</h4>
-                    <button type="button" class="btn-categoria" data-categoria="cremas">Explorar</button>
+                <div class="categorias-container">
+                    <div class="categoria">
+                        <h4>Todos los productos</h4>
+                        <button type="button" class="btn-categoria" data-categoria="todos">Explorar</button>
+                    </div>
+                    <div class="categoria">
+                        <h4>Cremas</h4>
+                        <button type="button" class="btn-categoria" data-categoria="cremas">Explorar</button>
+                    </div>
+                    <div class="categoria">
+                        <h4>Serums</h4>
+                        <button type="button" class="btn-categoria" data-categoria="serums">Explorar</button>
+                    </div>
+                    <div class="categoria">
+                        <h4>Mascarillas y pads</h4>
+                        <button type="button" class="btn-categoria" data-categoria="mascarillas">Explorar</button>
+                    </div>
                 </div>
-                <div class="categoria">
-                    <h4>Serums</h4>
-                    <button type="button" class="btn-categoria" data-categoria="serums">Explorar</button>
+                <!-- espacio de carga de productos x js-->
+                <div id="productos-container" class="grilla-productos"></div>
+        
+                    
+            </section>
+        </main>
+
+        <!-- Footer -->
+
+        <footer class="footer">
+            <div class="footer-container">
+                <!-- LOGO -->
+                <img src="client/img/logo.png" alt="Logo de la empresa">
+
+                <div class="footer-links">
+                    <a href="#">Inicio</a>
+                    <a href="#">Test</a>
+                    <a href="#">Productos</a>
                 </div>
-                <div class="categoria">
-                    <h4>Mascarillas y pads</h4>
-                    <button type="button" class="btn-categoria" data-categoria="mascarillas">Explorar</button>
+
+                <hr class="footer-separator">
+
+                <div class="footer-content">
+                    <p>&copy; 2026 SKINCORE. Todos los derechos reservados.</p>
+                    <p>Altube Renada -  Grajeda Juliana</p>
+
+                    <div class="social-media">
+
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <!-- espacio de carga de productos x js-->
-            <div id="productos-container" class="grilla-productos"></div>
-    
-                
-        </section>
+        </footer>
+    </body>
+</html>
