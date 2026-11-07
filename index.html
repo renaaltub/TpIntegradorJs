@@ -7,7 +7,7 @@
         <!-- favicon FALTA!!!!!!!!!!!-->
         <link rel="icon" href="" type="image/png">
         <!-- estilos -->
-        <link rel="stylesheet" href="/client/css/styles.css">
+        <link rel="stylesheet" href="client/css/styles.css">
         <!-- font awesome - ICONOS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
@@ -16,35 +16,21 @@
         <!-- encabezado -->
             <header class="header-totem">
         <div class="logo">
-            <img src="/client/img/logo.png" alt="Logo SKINCORE">
+            <img src="client/img/logo.png" alt="Logo SKINCORE">
             <h1>SKINCORE</h1>
         </div>
         
         <!-- Barra de nav -->
         <nav class="nav-totem">
-            <div class="nav-item-search">
-                <input type="text" class="barra-busqueda" placeholder="Buscar producto...">
-            </div>
             <div class="nav-botones">
-                <a href="test.html" class="btn-nav">Testear mi piel</a>
-                <a href="productos.html" class="btn-nav">Productos</a>
 
-                <div class="header-icons">
-                    <!-- Perfil / Usuario -->
-                    <a href="index.html" title="Mi Cuenta / Inicio"><i class="fa-solid fa-circle-user"></i></a>
-                    
-                    <!-- Carrito con contador -->
-                    <a href="carrito.html" title="Ver Carrito" class="carrito-icono-container">
-                        <i class="fa-solid fa-shopping-cart"></i>
-                        <span class="cart-count" id="contador-carrito">0</span>
-                    </a>
-                </div>
                 <!-- Botón de Modo Nocturno  -->
                 <button id="btn-modo-oscuro" class="btn-modo-nocturno" title="Cambiar tema claro/oscuro">
                     <i class="fa-solid fa-moon" id="icono-tema"></i>
                 </button>
 
                 <a href="/admin/login" class="btn-nav btn-admin-link">Admin</a>
+
             </div>
         </nav>
     </header>
@@ -53,7 +39,12 @@
         <main class="main-totem">
             <!-- pantalla de bienvenida -->
             <section class="welcome-screen">
+
+                <img src="client/img/logo.png" alt="Logo SKINCORE" class="logo-bienvenida">
+
                 <div> 
+
+
                     <h2 id="titulo-bienvenida">Te damos la bienvenida a SKINCORE</h2>
                     <p>Por favor, ingresá tu nombre para comenzar tu compra:</p> 
                     <form>
@@ -78,31 +69,13 @@
         <footer class="footer">
             <div class="footer-container">
                 <!-- LOGO -->
-                <img src="/client/img/logo.png" alt="Logo de la empresa">
-
-                <div class="footer-links">
-                    <a href="index.html">Inicio</a>
-                    <a href="test.html">Test</a>
-                    <a href="productos.html">Productos</a>
-                </div>
-
-                <hr class="footer-separator">
+                <img src="client/img/logo.png" alt="Logo de la empresa">
 
                 <div class="footer-content">
                     <p>&copy; 2026 SKINCORE. Todos los derechos reservados.</p>
                     <p>Programación III - División 132 | Proyecto Integrador 2026</p>
                     <p>Altube Renada - Grajeda Juliana</p>
 
-                    <div class="social-media">
-
-                        <a href="#" target="_blank">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a href="#" target="_blank">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </footer>
