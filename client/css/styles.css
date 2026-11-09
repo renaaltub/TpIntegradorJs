@@ -13,7 +13,7 @@
     --color-header: #e1adae;
 
     --color-titulos: var(--color-salmon);
-    --color-texto: var(--color-hueso);
+    --color-texto: #5e5052;
     --color-hover: var(--color-hueso);
     --color-header-texto: var(--color-salmon);
 
@@ -79,6 +79,8 @@ a {
     outline: 2px solid var(--color-resaltado);
     outline-offset: 2px;
 }
+
+/* HEADER */
 
 .header-totem {
     z-index: 1;
@@ -192,7 +194,7 @@ a {
     border: none;
     border-radius: 5px;
     background: var(--color-resaltado);
-    color: var(--color-texto);
+    color: var(--color-hover);
     font-weight: bold;
 }
 
@@ -214,6 +216,8 @@ a {
     font-weight: bold;
     text-align: center;
 }
+
+/* PANTALLAS */
 
 .main-totem {
     flex: 1;
@@ -388,6 +392,23 @@ p {
     width: 100%;
 }
 
+/* CARRITO */
+
+.cart-screen {
+    text-align: center;
+}
+
+.cart-screen h2{
+    color: var(--color-titulos);
+}
+
+.empty-cart-image{
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 14px;
+}
+
 .cart-summary {
     display: flex;
     flex-wrap: wrap;
@@ -411,7 +432,7 @@ p {
     border-radius: 5px;
     padding: 11px 20px;
     background: var(--color-resaltado);
-    color: var(--color-header-texto);
+    color: var(--color-hover);
     cursor: pointer;
     font-weight: normal;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
@@ -421,6 +442,8 @@ p {
     background: var(--color-primario-hover);
     box-shadow: var(--sombra-hover);
 }
+
+/* FOOTER */
 
 .footer {
     margin-top: auto;
@@ -440,6 +463,11 @@ p {
     height: 42px;
     object-fit: contain;
     margin-bottom: 14px;
+}
+
+.footer-separator{
+    background: var(--color-resaltado);
+    border: none;
 }
 
 .footer-links,
@@ -476,6 +504,8 @@ p {
 .social-media {
     margin-top: 12px;
 }
+
+/* MEDIA QUERIES */
 
 @media (min-width: 768px) {
     .header-totem {
