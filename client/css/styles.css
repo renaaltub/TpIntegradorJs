@@ -30,24 +30,26 @@
  * Modo oscuro
  */
 
-/**
 body.dark-mode {
-    --color-fondo: ;
-    --color-superficie: ;
-    --color-superficie-elevada:;
-    --color-texto: ;
-    hover: #C5D8F2;
-    --color-borde: ;
-    --color-primario:;
-    --color-primario-hover: ;
-    --color-resaltado: ;
-    --color-header: ;
-    --color-header-texto: ;
-    --sombra-suave: 0 3px 12px rgba(20, 14, 29, 0.3);
-    --sombra-hover: 0 5px 16px rgba(20, 14, 29, 0.4);
-    --sombra-header: 0 2px 10px rgba(20, 14, 29, 0.35);
-    --transparencia-header: rgba(168, 196, 236, 0.16);
-} **/
+    --color-fondo: #261f22;          
+    --color-superficie: #3b2f33;     
+    --color-superficie-elevada: #483a3e; 
+    --color-texto: #fef4f0;          
+    --color-texto-secundario: #d2b7bc; 
+    --color-borde: #59474d;          
+    --color-primario: #bd5c6e;
+    --color-primario-hover: #f48592; 
+    --color-resaltado: #f48592;      
+    --color-header: #31272a;        
+    --color-titulos: #f48592;       
+    --color-hover: #483a3e;         
+    --color-header-texto: #fef4f0;
+    
+    --sombra-suave: 0 3px 12px rgba(0, 0, 0, 0.4);
+    --sombra-hover: 0 5px 16px rgba(0, 0, 0, 0.5);
+    --sombra-header: 0 2px 10px rgba(0, 0, 0, 0.45);
+    --transparencia-header: rgba(254, 244, 240, 0.1);
+}
 
 * {
     margin: 0;
@@ -331,7 +333,7 @@ p {
     box-shadow: var(--sombra-hover);
 }
 
-.btn-test,
+
 .btn-categoria.activa {
     background: var(--color-resaltado);
 }
