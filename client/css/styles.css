@@ -192,18 +192,6 @@ a {
     background: var(--transparencia-header);
 }
 
-.btn-admin-link {
-    border: none;
-    border-radius: 5px;
-    background: var(--color-resaltado);
-    color: var(--color-hover);
-    font-weight: bold;
-}
-
-.btn-admin-link:hover {
-    border-color: var(--color-primario-hover);
-    background: var(--color-primario-hover);
-}
 
 .cart-count {
     position: absolute;
