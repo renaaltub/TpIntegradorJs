@@ -2,7 +2,7 @@ let carrito = JSON.parse(localStorage.getItem("carritoSKINCORE")) || [];
 let nombreUsuario = localStorage.getItem("nombreClienteSKINCORE") || "";
 let productosCargados = [];
 
-const API_PRODUCTOS_URL = "api/productos.php";
+const API_PRODUCTOS_URL = "http://localhost:3000/api/products/active";
 const CLAVE_MODO_OSCURO = "modoOscuroSKINCORE";
 const CLAVE_TICKET = "ticketSKINCORE";
 
@@ -55,14 +55,14 @@ async function obtenerProductosDesdeBD() {
         }
 
         const datos = await respuesta.json();
-        const lista = Array.isArray(datos) ? datos : (datos.productos || []);
-        productosCargados = lista.filter((prod) => Boolean(prod.activo));
+        const lista = datos.payload || [];
+        productosCargados = lista.filter((prod) => Boolean(prod.active));
         cargarProductos(productosCargados);
     } catch (error) {
         console.error("Error al cargar productos desde la base de datos:", error);
         productosCargados = [];
         if (contenedor) {
-            contenedor.innerHTML = "<p>No se pudieron cargar los productos. Verificá que Apache y MySQL estén activos y que la base esté configurada.</p>";
+            contenedor.innerHTML = "<p>No se pudieron cargar los productos. Verificá que el servidor Node.js y la conexión con MySQL estén funcionando.</p>";
         }
     }
 }
@@ -101,7 +101,7 @@ function cargarProductos(lista = productosCargados) {
 
     contenedor.innerHTML = "";
 
-    const productosActivos = lista.filter((prod) => Boolean(prod.activo));
+    const productosActivos = lista.filter((prod) => Boolean(prod.active));
 
     if (productosActivos.length === 0) {
         contenedor.innerHTML = "<p>No hay productos disponibles en este momento.</p>";
@@ -112,14 +112,14 @@ function cargarProductos(lista = productosCargados) {
         const card = document.createElement("div");
         card.classList.add("card-producto");
         const imagen = document.createElement("img");
-        imagen.src = producto.imagen || producto.img || "";
-        imagen.alt = producto.nombre;
+        imagen.src = producto.image || producto.img || "";
+        imagen.alt = producto.name;
 
         const nombre = document.createElement("h3");
-        nombre.textContent = producto.nombre;
+        nombre.textContent = producto.name;
 
         const precio = document.createElement("p");
-        precio.textContent = `$${producto.precio}`;
+        precio.textContent = `$${producto.price}`;
 
         const btnAgregar = document.createElement("button");
         btnAgregar.type = "button";
@@ -143,7 +143,7 @@ function configurarFiltrosYBusqueda() {
             if (categoria === "todos") {
                 cargarProductos(productosCargados);
             } else {
-                const filtrados = productosCargados.filter((p) => p.categoria === categoria);
+                const filtrados = productosCargados.filter((p) => p.category === categoria);
                 cargarProductos(filtrados);
             }
         });
@@ -153,7 +153,7 @@ function configurarFiltrosYBusqueda() {
     if (inputBusqueda) {
         inputBusqueda.addEventListener("input", (e) => {
             const texto = e.target.value.toLowerCase();
-            const resultados = productosCargados.filter((p) => p.nombre.toLowerCase().includes(texto));
+            const resultados = productosCargados.filter((p) => p.name.toLowerCase().includes(texto));
             cambiarPantalla("productos-section");
             cargarProductos(resultados);
         });
@@ -170,7 +170,7 @@ function agregarAlCarrito(producto) {
 
     guardarCarrito();
     actualizarContadorCarrito();
-    alert(`¡Agregaste ${producto.nombre} al carrito!`);
+    alert(`¡Agregaste ${producto.name} al carrito!`);
 }
 
 function guardarCarrito() {
@@ -188,11 +188,12 @@ function finalizarCompra() {
 
     const productosComprados = carrito.map((item) => ({
         id: item.id,
-        nombre: item.nombre,
-        imagen: item.imagen || item.img || "",
-        precio: Number(item.precio),
+        nombre: item.name,
+        imagen: item.image || item.img || "",
+        precio: Number(item.price),
         cantidad: Number(item.cantidad)
     }));
+
     const total = productosComprados.reduce(
         (acumulado, item) => acumulado + item.precio * item.cantidad,
         0
@@ -228,10 +229,9 @@ function mostrarCarrito() {
     if (!itemsContainer) return;
 
     itemsContainer.innerHTML = "";
-
     if (carrito.length === 0) {
         const imagenVacia = document.createElement("img");
-        imagenVacia.src = "client/img/carrito-vacio.png";
+        imagenVacia.src = "./src/public/img/carrito-vacio.png";
         imagenVacia.alt = "Carrito vacío";
         imagenVacia.classList.add("empty-cart-image");
 
@@ -254,7 +254,7 @@ function mostrarCarrito() {
     let totalGeneral = 0;
 
     carrito.forEach((item, index) => {
-        const subtotal = item.precio * item.cantidad;
+        const subtotal = item.price * item.cantidad;
         totalGeneral += subtotal;
 
         const divItem = document.createElement("div");
@@ -263,12 +263,12 @@ function mostrarCarrito() {
         detalle.classList.add("detalle-item-carrito");
 
         const imagen = document.createElement("img");
-        imagen.src = item.imagen || item.img || "";
-        imagen.alt = item.nombre;
+        imagen.src = item.image || item.img || "";
+        imagen.alt = item.name;
         imagen.classList.add("imagen-item-carrito");
 
         const descripcion = document.createElement("span");
-        descripcion.textContent = `${item.nombre} - $${subtotal}`;
+        descripcion.textContent = `${item.name} - $${subtotal}`;
         detalle.append(imagen, descripcion);
 
         const controles = document.createElement("div");
@@ -277,7 +277,7 @@ function mostrarCarrito() {
         btnSumar.type = "button";
         btnSumar.classList.add("btn-sumar");
         btnSumar.textContent = "+";
-        btnSumar.setAttribute("aria-label", `Aumentar cantidad de ${item.nombre}`);
+        btnSumar.setAttribute("aria-label", `Aumentar cantidad de ${item.name}`);
         btnSumar.addEventListener("click", () => {
             aumentarCantidad(item.id);
         });
@@ -285,13 +285,13 @@ function mostrarCarrito() {
         const cantidad = document.createElement("span");
         cantidad.classList.add("cantidad-item-carrito");
         cantidad.textContent = item.cantidad;
-        cantidad.setAttribute("aria-label", `Cantidad de ${item.nombre}`);
+        cantidad.setAttribute("aria-label", `Cantidad de ${item.name}`);
 
         const btnRestar = document.createElement("button");
         btnRestar.type = "button";
         btnRestar.classList.add("btn-restar");
         btnRestar.textContent = "-";
-        btnRestar.setAttribute("aria-label", `Disminuir cantidad de ${item.nombre}`);
+        btnRestar.setAttribute("aria-label", `Disminuir cantidad de ${item.name}`);
         btnRestar.addEventListener("click", () => {
             disminuirCantidad(item.id);
         });
@@ -485,6 +485,7 @@ function configurarNavegacionHeader() {
 }
 
 function init() {
+
     configurarModoOscuro();
     configurarBienvenida();
     configurarFiltrosYBusqueda();
