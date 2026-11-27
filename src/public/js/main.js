@@ -228,10 +228,9 @@ function mostrarCarrito() {
     if (!itemsContainer) return;
 
     itemsContainer.innerHTML = "";
-
     if (carrito.length === 0) {
         const imagenVacia = document.createElement("img");
-        imagenVacia.src = "client/img/carrito-vacio.png";
+        imagenVacia.src = "./src/public/img/carrito-vacio.png";
         imagenVacia.alt = "Carrito vacío";
         imagenVacia.classList.add("empty-cart-image");
 
@@ -485,6 +484,7 @@ function configurarNavegacionHeader() {
 }
 
 function init() {
+
     configurarModoOscuro();
     configurarBienvenida();
     configurarFiltrosYBusqueda();
